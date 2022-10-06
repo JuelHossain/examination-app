@@ -4,7 +4,10 @@ import useAuthCheck from "./hooks/useAuthCheck";
 import Login from "./pages/auth/Login";
 import Protected from "./pages/auth/Protected";
 import Unprotected from "./pages/auth/Unprotected";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Examination from "./pages/examination/Examination";
 import Home from "./pages/home/Home";
+import User from "./pages/user/User";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -20,10 +23,10 @@ function App() {
           </Protected>
         }
       >
-        {/* <Route index element={<Team />} />
-          <Route path="/teams" element={<Team />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/dashboard" element={<User />} /> */}
+        <Route index element={<Examination />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/examination" element={<Examination />} />
+        <Route path="/user" element={<User />} />
       </Route>
 
       <Route

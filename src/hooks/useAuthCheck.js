@@ -12,7 +12,7 @@ export default function useAuthCheck() {
     if (localUser) {
       const user = JSON.parse(localUser);
       if (user?.email) {
-        dispatch(userLoggedIn(localUser));
+        dispatch(userLoggedIn(user));
       }
     }
     setAuthChecked(true);

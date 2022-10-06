@@ -5,7 +5,7 @@ import { userLoggedOut } from "../auth/authSlice";
 const baseQuery = fetchBaseQuery({
   baseUrl: apiURL,
   prepareHeaders: async (headers, { getState, endpoint }) => {
-    const { email } = getState()?.auth.user;
+    const { email } = getState()?.auth?.user ?? {};
     if (email) {
       headers.set("Authorization", `granted`);
     }
@@ -20,7 +20,7 @@ export const apiSlice = createApi({
 
     if (result?.error?.status === 401) {
       api.dispatch(userLoggedOut());
-      localStorage.clear();
+      localStorage.removeItem("user");
     }
     return result;
   },

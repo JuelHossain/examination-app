@@ -10,7 +10,7 @@ export const authApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    login: builder.mutation({
+    login: builder.query({
       query: (data) => ({
         url: "/user",
         method: "GET",
@@ -18,7 +18,7 @@ export const authApi = apiSlice.injectEndpoints({
           user: data,
         },
       }),
-
+      keepUnusedDataFor: 0,
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const { data: user } = await queryFulfilled;
@@ -32,4 +32,4 @@ export const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useCreateUserMutation } = authApi;
+export const { useLoginQuery, useCreateUserMutation } = authApi;
