@@ -1,30 +1,29 @@
-import { Group, Stack } from "@mantine/core";
+import { Group, Overlay, Stack } from "@mantine/core";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 import { selectUser } from "../../features/auth/authSelector";
 import Profile from "../user/Profile";
-import CreateExam from "./CreateExam";
-import ManageExam from "./ManageExam";
+import AdminNav from "./AdminNav";
 
 const Dashboard = () => {
   const { admin } = useSelector(selectUser);
+  const [opened, handlers] = useDisclosure(false);
+  const small = useMediaQuery("(max-width:640px)");
+  const navProps = { opened, handlers };
+
   return (
-    <Stack>
-      <Profile />
-      <Group grow align={"stretch"} className="flex-col sm:flex-row">
-        {admin ? (
-          <>
-            <CreateExam />
-            <ManageExam />
-          </>
-        ) : (
-          <>
-            <CreateExam />
-            <ManageExam />
-          </>
+    <Group className="h-full" spacing={"xl"} align="start">
+      <AdminNav {...navProps} />
+      <Stack className="flex-1 h-full justify-start relative ">
+        {opened && small && (
+          <Overlay onClick={handlers.toggle} className="z-10" />
         )}
-      </Group>
-    </Stack>
+        <Profile />
+        <Outlet />
+      </Stack>
+    </Group>
   );
 };
 

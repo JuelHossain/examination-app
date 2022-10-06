@@ -2,6 +2,7 @@ import {
   ActionIcon,
   Card,
   Group,
+  ScrollArea,
   Stack,
   Textarea,
   TextInput,
@@ -25,14 +26,16 @@ const CreateExam = () => {
         />
         <Stack spacing={4}>
           <p className="font-semibold">Question {i} Options </p>
-          <Group grow>
-            <TextInput placeholder="Option A" />
-            <TextInput placeholder="Option B" />
-          </Group>
-          <Group grow>
-            <TextInput placeholder="Option C" />
-            <TextInput placeholder="Option D" />
-          </Group>
+          <Stack>
+            <Group grow>
+              <TextInput placeholder="Option A" />
+              <TextInput placeholder="Option B" />
+            </Group>
+            <Group grow>
+              <TextInput placeholder="Option C" />
+              <TextInput placeholder="Option D" />
+            </Group>
+          </Stack>
         </Stack>
       </>
     );
@@ -42,31 +45,32 @@ const CreateExam = () => {
   };
   return (
     <Card component="form" withBorder shadow={"xs"} className="flex-1">
-      <Group position="apart">
-        <Title className="mb-4" order={4}>
-          Create An Examination
-        </Title>
+      <Group position="apart" className="mb-4 ">
+        <Title order={4}>Create An Examination</Title>
         <Tooltip label="Add Another question" withArrow position="left">
-          <ActionIcon onClick={addQuestion}>
+          <ActionIcon onClick={addQuestion} color="violet">
             <IconPlus />
           </ActionIcon>
         </Tooltip>
       </Group>
-      <Stack>
-        <TextInput
-          placeholder="Name of Exam"
-          label="Exam Title"
-          withAsterisk
-          size="md"
-        />
-        <Textarea
-          label="Exam Description"
-          placeholder="Say something about your exam"
-          withAsterisk
-          size="md"
-        />
-        {questions}
-      </Stack>
+      <ScrollArea scrollbarSize={15} offsetScrollbars className="h-full ">
+        <Stack className="mb-10 ">
+          <TextInput
+            placeholder="Name of Exam"
+            label="Exam Title"
+            withAsterisk
+            size="md"
+          />
+          <Textarea
+            label="Exam Description"
+            placeholder="Say something about your exam"
+            withAsterisk
+            size="md"
+          />
+
+          {questions}
+        </Stack>
+      </ScrollArea>
     </Card>
   );
 };

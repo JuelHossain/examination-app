@@ -6,7 +6,7 @@ const Nav = ({ mobile }) => {
   const { pathname } = useLocation();
   console.log(pathname);
   const links = nav.map((n) => {
-    const match = n === pathname.slice(1);
+    const match = pathname.includes(n);
     return (
       <Link
         key={Math.random()}
