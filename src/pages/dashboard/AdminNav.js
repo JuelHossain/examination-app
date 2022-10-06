@@ -48,14 +48,14 @@ const AdminNav = ({ opened, handlers }) => {
             const match = pathname.includes(nav.link);
             return (
               <Link
+                key={nav.link}
                 onClick={() => {
                   if (small) {
                     close();
                   }
                 }}
                 className={`font-semibold capitalize py-1 px-2   rounded flex gap-2 hover:bg-main-500 hover:text-main-50 duration-300 ${
-                  (pathname === "/dashboard" &&
-                    nav.link === "create-exam") ||
+                  (pathname === "/dashboard" && nav.link === "create-exam") ||
                   match
                     ? "bg-main-500 text-main-50 "
                     : "bg-main-200 text-main-600 "
