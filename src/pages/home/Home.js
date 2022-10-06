@@ -7,9 +7,7 @@ const Home = () => {
   return (
     <AppShell
       classNames={{
-        root: "h-screen flex flex-col",
-        body: "overflow-auto",
-        main: "container mx-auto px-5 pt-16 sm:pt-20",
+        main: "container mx-auto px-5 py-16 sm:py-20 ",
       }}
       header={
         <Header className="py-2 px-5  ">
