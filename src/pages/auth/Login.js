@@ -43,7 +43,7 @@ export default function Login() {
   return (
     <Box className="h-screen flex justify-center items-center flex-col">
       <Card>
-        <Title align="center" className="font-black">
+        <Title align="center" className="font-black text-main-500">
           Please Login!
         </Title>
         <Text color="dimmed" size="sm" align="center" mt={5}>
@@ -79,7 +79,7 @@ export default function Login() {
             onClose={() => setError(null)}
           ></Notification>
         )}
-        <Button fullWidth mt="xl" type="submit">
+        <Button fullWidth mt="xl" type="submit" className="bg-main-500">
           Sign in
         </Button>
       </Card>

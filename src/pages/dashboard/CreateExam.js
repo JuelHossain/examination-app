@@ -73,12 +73,7 @@ const CreateExam = () => {
   }, [totalQ]);
 
   return (
-    <Card
-      component="form"
-      withBorder
-      shadow={"xs"}
-      className="flex-1 "
-    >
+    <Card component="form" withBorder shadow={"xs"} className="flex-1 bg-main-50/20">
       <Group position="apart" className="mb-4 ">
         <Title order={4}>Create An Examination</Title>
         <Group>
@@ -94,7 +89,15 @@ const CreateExam = () => {
           </Tooltip>
         </Group>
       </Group>
-      <ScrollArea scrollbarSize={15} offsetScrollbars className="h-full ">
+      <ScrollArea
+        classNames={{
+          thumb: "bg-main-500 ",
+          scrollbar: "bg-main-100",
+        }}
+        scrollbarSize={15}
+        offsetScrollbars
+        className="h-full "
+      >
         <SimpleGrid
           cols={2}
           breakpoints={[{ maxWidth: 1024, cols: 1, spacing: "sm" }]}

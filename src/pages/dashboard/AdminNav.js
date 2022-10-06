@@ -33,7 +33,7 @@ const AdminNav = ({ opened, handlers }) => {
       {opened && (
         <Stack
           spacing={10}
-          className="h-full  basis-48 bg-main-50 py-4 px-2 border shadow-sm fixed sm:static z-20 "
+          className="h-full  basis-48 bg-main-50 sm:bg-main-50/20 py-4 px-2 border shadow-sm fixed sm:static z-20 "
         >
           <ActionIcon
             onClick={toggle}
