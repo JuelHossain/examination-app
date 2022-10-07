@@ -1,23 +1,23 @@
 import { Stack, Textarea, TextInput } from "@mantine/core";
+import { useFormContext } from "./form-context";
 
-const Details = ({ form, handleChange }) => {
+const Details = () => {
+  const { getInputProps } = useFormContext();
   return (
     <Stack className="flex-1 border shadow-sm p-2 rounded-md basis-60">
       <TextInput
-        value={form.title}
+        {...getInputProps("title")}
         required
         name="title"
-        onChange={handleChange}
         placeholder="Name of Exam"
         label="Exam Title"
         withAsterisk
         size="md"
       />
       <Textarea
-        value={form.description}
         required
+        {...getInputProps("description")}
         name="description"
-        onChange={handleChange}
         label="Exam Description"
         placeholder="Say something about your exam"
         withAsterisk

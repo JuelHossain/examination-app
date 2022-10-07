@@ -1,21 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  form: {
-    title: "",
-    description: "",
-  },
-};
+const initialState = {};
 
 const createExamSlice = createSlice({
   name: "createExam",
   initialState,
-  reducers: {
-    setForm: (state, action) => {
-      Object.assign(state.form, action.payload);
-    },
-  },
+  reducers: {},
 });
 
-export const { setForm } = createExamSlice.actions;
+// export const {  } = createExamSlice.actions;
 export default createExamSlice.reducer;

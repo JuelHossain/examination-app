@@ -1,9 +1,9 @@
 import { ScrollArea, SimpleGrid } from "@mantine/core";
 import React from "react";
 import Details from "./Details";
-import Questions from "./Questions";
+import Questions from "./questions/Questions";
 
-const Form = (props) => {
+const Form = () => {
   return (
     <ScrollArea
       classNames={{
@@ -19,8 +19,8 @@ const Form = (props) => {
         breakpoints={[{ maxWidth: 1024, cols: 1, spacing: "sm" }]}
         align={"stretch"}
       >
-        <Details {...props} />
-        <Questions {...props} />
+        <Details />
+        <Questions  />
       </SimpleGrid>
     </ScrollArea>
   );
