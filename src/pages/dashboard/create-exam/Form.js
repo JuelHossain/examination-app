@@ -11,7 +11,7 @@ const Form = () => {
         scrollbar: "bg-main-100",
       }}
       scrollbarSize={15}
-      offsetScrollbars
+    
       className="h-full "
     >
       <SimpleGrid

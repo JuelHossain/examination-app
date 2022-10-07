@@ -8,10 +8,12 @@ export default function Options({ index, options }) {
       {Object.keys(options).map((option) => {
         return (
           <TextInput
-            {...getInputProps(`questions.${index}.options.${option}.option`)}
+            {...getInputProps(`questions.${index}.options.${option}`)}
             rightSection={
               <Checkbox
-                color="violet"
+                classNames={{
+                  input: "checked:bg-main-500 checked:border-main-500",
+                }}
                 checked={option === values.questions[index].answer}
                 onChange={(e) => {
                   const checked = e.target.checked;

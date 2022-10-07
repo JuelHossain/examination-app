@@ -6,7 +6,7 @@ import { selectUser } from "../../features/auth/authSelector";
 const Profile = () => {
   const { name, email, admin } = useSelector(selectUser);
   return (
-    <Group position="apart" align={"start"}>
+    <Group className="flex-col-reverse sm:flex-row sm:justify-between sm:items-end">
       <Group align={"stretch"} spacing={0}>
         <Avatar size={"xl"} />
         <Stack

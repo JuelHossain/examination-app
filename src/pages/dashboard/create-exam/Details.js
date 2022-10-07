@@ -5,22 +5,19 @@ const Details = () => {
   const { getInputProps } = useFormContext();
   return (
     <Stack className="flex-1 border shadow-sm p-2 rounded-md basis-60">
+      <p className="text-center font-semibold text-lg bg-main-100 py-1 text-main-500 shadow-sm border rounded-md">
+        Examination Detail
+      </p>
       <TextInput
-        {...getInputProps("title")}
         required
-        name="title"
+        {...getInputProps("title")}
         placeholder="Name of Exam"
-        label="Exam Title"
-        withAsterisk
         size="md"
       />
       <Textarea
         required
         {...getInputProps("description")}
-        name="description"
-        label="Exam Description"
         placeholder="Say something about your exam"
-        withAsterisk
         size="md"
       />
     </Stack>

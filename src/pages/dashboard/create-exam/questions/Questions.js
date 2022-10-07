@@ -9,22 +9,23 @@ const Questions = () => {
     const n = index + 1;
     return (
       <Stack
+        spacing={10}
         key={q.key}
         className="flex-1 border shadow-sm p-2 rounded-md basis-60 relative"
       >
+        <p className="text-center font-semibold text-lg bg-main-100 py-1 text-main-500 shadow-sm border rounded-md">
+          Question {n}
+        </p>
         <TextInput
           {...getInputProps(`questions.${index}.question`)}
           required
-          label={`Question ${n}`}
-          placeholder="Question"
+          placeholder={`Question ?`}
           withAsterisk
           size="md"
         />
 
-        <Stack spacing={4}>
-          <p className="font-semibold">Question {n} Options </p>
-          <Options index={index} options={q.options} />
-        </Stack>
+        <Options index={index} options={q.options} />
+
         <RemoveQuestion index={index} />
       </Stack>
     );

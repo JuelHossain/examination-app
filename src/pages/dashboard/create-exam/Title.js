@@ -42,15 +42,42 @@ const CardTitle = () => {
   };
   return (
     <Group position="apart" className="mb-4 ">
-      <Title order={4}>Create An Examination</Title>
-      <Group>
-        <Tooltip label="Remove Last Question" withArrow position="left">
-          <ActionIcon onClick={RemoveQuestion} color="violet">
+      <Title
+        order={4}
+        className="text-main-600 bg-main-100 py-1 px-2 rounded-md"
+      >
+        Create An Examination
+      </Title>
+      <Group spacing={6}>
+        <Tooltip
+          classNames={{
+            tooltip: "bg-main-500",
+          }}
+          label="Remove Last Question"
+          withArrow
+          position="left"
+        >
+          <ActionIcon
+            variant="filled"
+            onClick={RemoveQuestion}
+            className="bg-main-500"
+          >
             <IconMinus />
           </ActionIcon>
         </Tooltip>
-        <Tooltip label="Add Another question" withArrow position="left">
-          <ActionIcon onClick={addQuestion} color="violet">
+        <Tooltip
+          classNames={{
+            tooltip: "bg-main-500",
+          }}
+          label="Add Another question"
+          withArrow
+          position="left"
+        >
+          <ActionIcon
+            className="bg-main-500"
+            variant="filled"
+            onClick={addQuestion}
+          >
             <IconPlus />
           </ActionIcon>
         </Tooltip>
