@@ -4,10 +4,9 @@ import { showNotification } from "@mantine/notifications";
 import { IconMinus, IconPlus } from "@tabler/icons";
 import React from "react";
 import { getRandomNumber } from "../../../utils/random";
-import { useFormContext } from "./form-context";
 
-const CardTitle = () => {
-  const { insertListItem, removeListItem, values } = useFormContext();
+const CardTitle = ({ form, title }) => {
+  const { insertListItem, removeListItem, values } = form;
 
   const addQuestion = () => {
     const options = ["A", "B", "C", "D"];
@@ -46,7 +45,7 @@ const CardTitle = () => {
         order={4}
         className="text-main-600 bg-main-100 py-1 px-2 rounded-md"
       >
-        Create An Examination
+        {title}
       </Title>
       <Group spacing={6}>
         <Tooltip

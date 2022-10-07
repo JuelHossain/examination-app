@@ -1,11 +1,10 @@
 import { Stack, TextInput } from "@mantine/core";
-import { useFormContext } from "../form-context";
 import Options from "./Options";
 import RemoveQuestion from "./RemoveQuestion";
 
-const Questions = () => {
-  const { values, getInputProps } = useFormContext();
-  const questions = values.questions.map((q, index) => {
+const Questions = ({ form }) => {
+  const { values, getInputProps } = form;
+  const questions = values?.questions?.map((q, index) => {
     const n = index + 1;
     return (
       <Stack
@@ -24,9 +23,9 @@ const Questions = () => {
           size="md"
         />
 
-        <Options index={index} options={q.options} />
+        <Options index={index} options={q.options} form={form} />
 
-        <RemoveQuestion index={index} />
+        <RemoveQuestion index={index} form={form} />
       </Stack>
     );
   });

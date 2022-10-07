@@ -23,7 +23,7 @@ root.render(
           withGlobalStyles
           withNormalizeCSS
         >
-          <NotificationsProvider>
+          <NotificationsProvider position="top-right">
             <App />
           </NotificationsProvider>
         </MantineProvider>

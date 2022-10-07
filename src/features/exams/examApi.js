@@ -3,10 +3,13 @@ import { apiSlice } from "../api/apiSlice";
 export const examApi = apiSlice.injectEndpoints({
   endpoints: ({ query, mutation }) => ({
     getExams: query({
-      query: (email) => `/exam?email=${email}`,
+      query: (email) => `/exams?email=${email}`,
+      onQueryStarted: async (email) => {
+        console.log(email);
+      },
     }),
     getExam: query({
-      query: (id) => `/exam/${id}`,
+      query: (id) => `/exams/${id}`,
     }),
     createExam: mutation({
       query: (data) => ({
@@ -20,9 +23,15 @@ export const examApi = apiSlice.injectEndpoints({
     }),
     updateExam: mutation({
       query: ({ id, patch }) => ({
-        url: `/exam/${id}`,
+        url: `/exams/${id}`,
         method: "PATCH",
         body: patch,
+      }),
+    }),
+    deleteExam: mutation({
+      query: (id) => ({
+        url: `/exams/${id}`,
+        method: "DELETE",
       }),
     }),
   }),
@@ -33,4 +42,5 @@ export const {
   useUpdateExamMutation,
   useGetExamQuery,
   useGetExamsQuery,
+  useDeleteExamMutation
 } = examApi;

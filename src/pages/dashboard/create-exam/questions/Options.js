@@ -1,8 +1,7 @@
 import { Checkbox, SimpleGrid, TextInput } from "@mantine/core";
-import { useFormContext } from "../form-context";
 
-export default function Options({ index, options }) {
-  const { values, getInputProps, setFieldValue } = useFormContext();
+export default function Options({ index, options, form }) {
+  const { values, getInputProps, setFieldValue } = form;
   return (
     <SimpleGrid cols={2} spacing={10}>
       {Object.keys(options).map((option) => {

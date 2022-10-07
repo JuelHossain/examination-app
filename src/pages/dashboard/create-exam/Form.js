@@ -3,7 +3,7 @@ import React from "react";
 import Details from "./Details";
 import Questions from "./questions/Questions";
 
-const Form = () => {
+const Form = ({ form }) => {
   return (
     <ScrollArea
       classNames={{
@@ -11,7 +11,6 @@ const Form = () => {
         scrollbar: "bg-main-100",
       }}
       scrollbarSize={15}
-    
       className="h-full "
     >
       <SimpleGrid
@@ -19,8 +18,8 @@ const Form = () => {
         breakpoints={[{ maxWidth: 1024, cols: 1, spacing: "sm" }]}
         align={"stretch"}
       >
-        <Details />
-        <Questions  />
+        <Details form={form} />
+        <Questions form={form} />
       </SimpleGrid>
     </ScrollArea>
   );
