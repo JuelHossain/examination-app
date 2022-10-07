@@ -6,7 +6,7 @@ import { userLoggedOut } from "../../../features/auth/authSlice";
 
 const Logout = () => {
   const dispatch = useDispatch();
-  console.log(dispatch);
+
   return (
     <ActionIcon
       size={"lg"}

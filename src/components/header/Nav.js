@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 const Nav = ({ mobile }) => {
   const nav = ["examination", "dashboard"];
   const { pathname } = useLocation();
-  console.log(pathname);
   const links = nav.map((n) => {
     const match = pathname.includes(n);
     return (
