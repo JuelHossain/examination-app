@@ -1,10 +1,11 @@
 import { Stack, Textarea, TextInput } from "@mantine/core";
 
-const Details = ({ handleChange }) => {
+const Details = ({ form, handleChange }) => {
   return (
     <Stack className="flex-1 border shadow-sm p-2 rounded-md basis-60">
-          <TextInput
-              required
+      <TextInput
+        value={form.title}
+        required
         name="title"
         onChange={handleChange}
         placeholder="Name of Exam"
@@ -12,8 +13,9 @@ const Details = ({ handleChange }) => {
         withAsterisk
         size="md"
       />
-          <Textarea
-              required
+      <Textarea
+        value={form.description}
+        required
         name="description"
         onChange={handleChange}
         label="Exam Description"

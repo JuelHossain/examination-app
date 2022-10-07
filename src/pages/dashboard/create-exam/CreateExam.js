@@ -1,14 +1,25 @@
 import { Button, Card } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../features/auth/authSelector";
+import { useCreateExamMutation } from "../../../features/exams/examApi";
 import Form from "./Form";
 import CardTitle from "./Title";
 
 const CreateExam = () => {
+  const user = useSelector(selectUser);
   const [totalQ, setTotalQ] = useState(3);
   const [form, setForm] = useState({
     title: "",
     description: "",
   });
+
+  const resetForm = () => {
+    setForm({
+      title: "",
+      description: "",
+    });
+  };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -17,12 +28,21 @@ const CreateExam = () => {
   };
 
   const props = { totalQ, setTotalQ, form, setForm, handleChange };
-
+  const [createExam, { data, isSuccess, isError, error }] =
+    useCreateExamMutation();
+  useEffect(() => {
+    if (isSuccess) {
+      resetForm();
+    }
+    if (isError) {
+      console.log(error.data);
+    }
+  }, [isSuccess, data, isError, error]);
   return (
     <Card
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(form);
+        createExam({ ...form, createdBy: user });
       }}
       component="form"
       withBorder
@@ -31,7 +51,9 @@ const CreateExam = () => {
     >
       <CardTitle {...props} />
       <Form {...props} />
-      <Button type="submit">Create Exam</Button>
+      <Button color="violet" type="submit">
+        Create Exam
+      </Button>
     </Card>
   );
 };

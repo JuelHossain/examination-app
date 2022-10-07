@@ -6,9 +6,9 @@ const Questions = ({ totalQ, setForm, form }) => {
   useEffect(() => {
     let questions = [];
     for (let i = 1; i <= totalQ; i++) {
+      console.log(i);
       questions.push(<Question key={i} i={i} setForm={setForm} />);
     }
-
     setQuestions(questions);
   }, [totalQ, setForm]);
 
