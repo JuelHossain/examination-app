@@ -6,7 +6,7 @@ import { selectUser } from "../../../features/auth/authSelector";
 import UserList from "./UserList";
 
 const ManageAdmin = () => {
-  const { data, isLoading } = useGetUsersQuery(true);
+  const { data, isLoading } = useGetUsersQuery('admin');
   const { email } = useSelector(selectUser);
 
   return (

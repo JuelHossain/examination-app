@@ -13,6 +13,7 @@ const CreateUser = () => {
       email: "",
       admin: "false",
       password: "hello",
+      exams: [],
     },
   });
   const [createUser, { isSuccess }] = useCreateUserMutation();

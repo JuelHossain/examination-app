@@ -20,7 +20,6 @@ const StartExam = ({ id }) => {
         overlayOpacity={0.1}
         overlayBlur={1}
         size={"xl"}
-        withCloseButton={false}
         opened={opened}
         onClose={toggle}
       >

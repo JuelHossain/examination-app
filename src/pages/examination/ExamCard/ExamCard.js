@@ -1,4 +1,5 @@
-import { Group, LoadingOverlay, Stack } from "@mantine/core";
+import { CloseButton, Group, LoadingOverlay, Stack } from "@mantine/core";
+import { useToggle } from "@mantine/hooks";
 import React from "react";
 import UserInfo from "../../../components/header/userNav/UserInfo";
 import { useGetExamQuery } from "../../../features/exams/examApi";
@@ -23,6 +24,7 @@ const ExamCard = ({ id }) => {
         <UserInfo author={authorName} />
         <StartExam id={id} />
       </Group>
+      
     </Stack>
   );
 };
