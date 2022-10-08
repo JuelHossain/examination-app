@@ -9,7 +9,7 @@ const Questions = ({ form }) => {
     return (
       <Stack
         spacing={10}
-        key={q.key}
+        key={index}
         className="flex-1 border shadow-sm p-2 rounded-md basis-60 relative"
       >
         <p className="text-center font-semibold text-lg bg-main-100 py-1 text-main-500 shadow-sm border rounded-md">
@@ -19,7 +19,6 @@ const Questions = ({ form }) => {
           {...getInputProps(`questions.${index}.question`)}
           required
           placeholder={`Question ?`}
-          withAsterisk
           size="md"
         />
 

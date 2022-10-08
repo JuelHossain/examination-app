@@ -14,7 +14,7 @@ import Form from "../../create-exam/Form";
 import { initialFormValues } from "../../create-exam/initialFormValues";
 import CardTitle from "../../create-exam/Title";
 
-const EditExam = ({ id,toggle }) => {
+const EditExam = ({ id, toggle }) => {
   const user = useSelector(selectUser);
   const {
     data: { createdBy, ...formInitial } = {},
@@ -29,11 +29,8 @@ const EditExam = ({ id,toggle }) => {
   useEffect(() => {
     if (gotExam) {
       setValues(formInitial);
-      console.log("here");
     }
   }, [gotExam]);
-
-  console.log(values);
 
   const [
     updateExam,
@@ -47,8 +44,9 @@ const EditExam = ({ id,toggle }) => {
         color: "teal",
         icon: <IconCheck />,
       });
-        reset();
-        toggle();
+      reset();
+      toggle();
+    } else {
     }
     if (isUpdateError || isExamError) {
       showNotification({
@@ -61,13 +59,12 @@ const EditExam = ({ id,toggle }) => {
   return (
     <Card
       onSubmit={onSubmit((data) => {
-        console.log(data);
         updateExam({ id, patch: { ...data, updatedBy: user } });
       })}
       component="form"
       withBorder
       shadow={"xs"}
-      className="flex-1 bg-main-50/20 flex flex-col"
+      className="flex-1 bg-main-50/20 flex flex-col gap-4"
     >
       <LoadingOverlay visible={updating || gettingExam} />
       <CardTitle form={form} title="Edit The Exam" />

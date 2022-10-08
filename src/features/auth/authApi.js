@@ -2,17 +2,27 @@ import { apiSlice } from "../api/apiSlice";
 import { userLoggedIn } from "./authSlice";
 
 export const authApi = apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
-    createUser: builder.mutation({
+  endpoints: ({ query, mutation }) => ({
+    createUser: mutation({
       query: (data) => ({
         url: "/user",
         method: "POST",
         body: data,
       }),
+      onQueryStarted: async (arg, { queryFulfilled, dispatch }) => {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            authApi.util.updateQueryData("getUsers", undefined, (draft) => {
+              draft.push(data);
+            })
+          );
+        } catch {}
+      },
     }),
-    login: builder.query({
+    login: query({
       query: (data) => ({
-        url: "/user",
+        url: "/user/login",
         method: "GET",
         headers: {
           user: data,
@@ -29,7 +39,59 @@ export const authApi = apiSlice.injectEndpoints({
         }
       },
     }),
+    getUsers: query({
+      query: (admin) => `/user?admin=${admin}`,
+      providesTags: ["getUsers"],
+    }),
+    getUser: query({
+      query: (id) => `user/alone/${id}`,
+    }),
+    updateUser: mutation({
+      query: ({ id, patch }) => ({
+        url: `/user/alone/${id}`,
+        method: "PATCH",
+        body: patch,
+      }),
+      invalidatesTags: ["getUsers"],
+      onQueryStarted: async ({ id, patch }, { queryFulfilled, dispatch }) => {
+        const patched = dispatch(
+          authApi.util.updateQueryData("getUser", id, (draft) => {
+            Object.assign(draft, patch);
+          })
+        );
+        try {
+          await queryFulfilled;
+        } catch {
+          patched.undo();
+        }
+      },
+    }),
+    deleteUser: mutation({
+      query: (id) => ({
+        url: `/user/alone/${id}`,
+        method: "DELETE",
+      }),
+      onQueryStarted: async (id, { queryFulfilled, dispatch }) => {
+        const deleted = dispatch(
+          authApi.util.updateQueryData("getUsers", undefined, (draft) => {
+            return draft.filter((user) => user.id !== id);
+          })
+        );
+        try {
+          await queryFulfilled;
+        } catch {
+          deleted.undo();
+        }
+      },
+    }),
   }),
 });
 
-export const { useLoginQuery, useCreateUserMutation } = authApi;
+export const {
+  useLoginQuery,
+  useCreateUserMutation,
+  useGetUsersQuery,
+  useGetUserQuery,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
+} = authApi;

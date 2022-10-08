@@ -1,24 +1,12 @@
 import { ActionIcon, Affix, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import {
-  IconFileSpreadsheet,
-  IconIndentDecrease,
-  IconIndentIncrease,
-  IconManualGearbox,
-  IconUserPlus,
-  IconUsers,
-} from "@tabler/icons";
+import { IconIndentDecrease, IconIndentIncrease } from "@tabler/icons";
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const AdminNav = ({ opened, handlers }) => {
+const AdminNav = ({ opened, handlers, navs }) => {
   const { toggle, open, close } = handlers;
-  const adminNav = [
-    { name: "Create Exam", link: "create-exam", icon: IconFileSpreadsheet },
-    { name: "manage Exam", link: "manage-exam", icon: IconManualGearbox },
-    { name: "create User", link: "create-user", icon: IconUserPlus },
-    { name: "manage User", link: "manage-user", icon: IconUsers },
-  ];
+
   const { pathname } = useLocation();
   const small = useMediaQuery("(max-width:640px)");
   useEffect(() => {
@@ -44,7 +32,7 @@ const AdminNav = ({ opened, handlers }) => {
           >
             <IconIndentDecrease />
           </ActionIcon>
-          {adminNav.map((nav) => {
+          {navs.map((nav) => {
             const match = pathname.includes(nav.link);
             return (
               <Link
@@ -55,8 +43,7 @@ const AdminNav = ({ opened, handlers }) => {
                   }
                 }}
                 className={`font-semibold capitalize py-1 px-2   rounded flex gap-2 hover:bg-main-500 hover:text-main-50 duration-300 ${
-                  (pathname === "/dashboard" && nav.link === "create-exam") ||
-                  match
+                  (pathname === "/dashboard" && nav?.index) || match
                     ? "bg-main-500 text-main-50 "
                     : "bg-main-200 text-main-600 "
                 }`}

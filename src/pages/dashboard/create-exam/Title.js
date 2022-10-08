@@ -40,7 +40,7 @@ const CardTitle = ({ form, title }) => {
     }
   };
   return (
-    <Group position="apart" className="mb-4 ">
+    <Group position="apart">
       <Title
         order={4}
         className="text-main-600 bg-main-100 py-1 px-2 rounded-md"

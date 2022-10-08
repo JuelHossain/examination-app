@@ -13,10 +13,11 @@ import { IconX } from "@tabler/icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authApi } from "../../features/auth/authApi";
+import AutoLogin from "./AutoLogin";
 export default function Login() {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const { getInputProps, onSubmit } = useForm({
+  const { getInputProps, onSubmit, setValues } = useForm({
     initialValues: {
       email: "",
       password: "",
@@ -82,6 +83,7 @@ export default function Login() {
         <Button fullWidth mt="xl" type="submit" className="bg-main-500">
           Sign in
         </Button>
+        <AutoLogin setValues={setValues} />
       </Card>
     </Box>
   );

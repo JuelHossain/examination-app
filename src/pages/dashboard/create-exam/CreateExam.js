@@ -44,7 +44,7 @@ const CreateExam = () => {
       component="form"
       withBorder
       shadow={"xs"}
-      className="flex-1 bg-main-50/20 flex flex-col"
+      className="flex-1 bg-main-50/20 flex flex-col gap-4"
     >
       <LoadingOverlay visible={isLoading} />
       <CardTitle form={form} title="Create A Exam" />

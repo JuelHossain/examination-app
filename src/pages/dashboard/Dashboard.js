@@ -6,12 +6,13 @@ import { Outlet } from "react-router-dom";
 import { selectUser } from "../../features/auth/authSelector";
 import Profile from "../user/Profile";
 import AdminNav from "./AdminNav";
+import { adminNav, userNav } from "./navs";
 
 const Dashboard = () => {
   const { admin } = useSelector(selectUser);
   const [opened, handlers] = useDisclosure(false);
   const small = useMediaQuery("(max-width:640px)");
-  const navProps = { opened, handlers };
+  const navProps = { opened, handlers, navs: admin ? adminNav : userNav };
 
   return (
     <Group className="h-full" spacing={"xl"} align="start">
@@ -20,7 +21,6 @@ const Dashboard = () => {
         {opened && small && (
           <Overlay onClick={handlers.toggle} className="z-10" />
         )}
-        <Profile />
         <Outlet />
       </Stack>
     </Group>

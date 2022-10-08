@@ -7,7 +7,7 @@ import UserNav from "./userNav/UserNav";
 
 const Navigation = () => {
   return (
-    <Group position="apart" noWrap className="container mx-auto px-5">
+    <Group position="apart" noWrap className="xl:container mx-auto px-5">
       <Logo />
       <Nav />
       <UserNav />
