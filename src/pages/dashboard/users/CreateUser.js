@@ -1,4 +1,5 @@
-import { Button, Paper, PasswordInput, TextInput } from "@mantine/core";
+import { faker } from "@faker-js/faker";
+import { Button, Group, Paper, PasswordInput, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { IconCircleCheck } from "@tabler/icons";
@@ -6,7 +7,7 @@ import React, { useEffect } from "react";
 import { useCreateUserMutation } from "../../../features/auth/authApi";
 
 const CreateUser = () => {
-  const { getInputProps, onSubmit, values } = useForm({
+  const { getInputProps, onSubmit, values, setValues } = useForm({
     initialValues: {
       name: "",
       email: "",
@@ -15,8 +16,13 @@ const CreateUser = () => {
     },
   });
   const [createUser, { isSuccess }] = useCreateUserMutation();
-  const submitHandler = (data) => {
+  const createUserHandler = (data) => {
     createUser(data);
+  };
+  const createRandomUser = () => {
+    const name = faker.name.fullName();
+    const email = faker.internet.email();
+    setValues({ name, email });
   };
   useEffect(() => {
     if (isSuccess) {
@@ -30,7 +36,7 @@ const CreateUser = () => {
   return (
     <Paper
       component="form"
-      onSubmit={onSubmit(submitHandler)}
+      onSubmit={onSubmit(createUserHandler)}
       withBorder
       shadow={"sm"}
       className=" p-4 space-y-2 flex-1 basis-60 flex flex-col justify-center"
@@ -55,9 +61,14 @@ const CreateUser = () => {
         {...getInputProps("password")}
         readOnly
       />
-      <Button className="bg-main-500" type="submit" fullWidth>
-        Create User
-      </Button>
+      <Group grow>
+        <Button onClick={createRandomUser} className="bg-main-500">
+          Create random User
+        </Button>
+        <Button className="bg-main-500" type="submit">
+          Create User
+        </Button>
+      </Group>
     </Paper>
   );
 };

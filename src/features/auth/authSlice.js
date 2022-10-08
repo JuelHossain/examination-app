@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: undefined,
-  loginError: "",
 };
 
 const authSlice = createSlice({
@@ -14,7 +13,6 @@ const authSlice = createSlice({
     },
     userLoggedOut: (state) => {
       localStorage.removeItem("user");
-      console.log('hello')
       state.user = undefined;
     },
     setLoginError: (state, action) => {

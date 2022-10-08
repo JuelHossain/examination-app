@@ -12,7 +12,7 @@ import {
 } from "../../../../features/exams/examApi";
 import Form from "../../create-exam/Form";
 import { initialFormValues } from "../../create-exam/initialFormValues";
-import CardTitle from "../../create-exam/Title";
+import CardTitle from "../../create-exam/title/Title";
 
 const EditExam = ({ id, toggle }) => {
   const user = useSelector(selectUser);

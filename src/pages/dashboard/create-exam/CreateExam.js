@@ -1,4 +1,4 @@
-import { Button, Card, LoadingOverlay } from "@mantine/core";
+import { Button, Card, Group, LoadingOverlay } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons";
@@ -9,13 +9,13 @@ import { useCreateExamMutation } from "../../../features/exams/examApi";
 import Form from "./Form";
 
 import { initialFormValues } from "./initialFormValues";
-import CardTitle from "./Title";
+import CardTitle from "./title/Title";
 
 const CreateExam = () => {
   const user = useSelector(selectUser);
   const form = useForm(initialFormValues);
 
-  const { reset, onSubmit } = form;
+  const { reset, onSubmit, setValues } = form;
   const [createExam, { isSuccess, isError, isLoading }] =
     useCreateExamMutation();
   useEffect(() => {
@@ -49,9 +49,11 @@ const CreateExam = () => {
       <LoadingOverlay visible={isLoading} />
       <CardTitle form={form} title="Create A Exam" />
       <Form form={form} />
-      <Button size="xl" className="bg-main-500" type="submit">
-        Create Exam
-      </Button>
+      <Group>
+        <Button size="xl" className="bg-main-500 flex-1" type="submit">
+          Create Exam
+        </Button>
+      </Group>
     </Card>
   );
 };
