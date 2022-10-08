@@ -9,7 +9,7 @@ const Home = () => {
       <Header className="py-2 static">
         <Navigation />
       </Header>
-      <Box className="xl:container mx-auto px-5 h-full my-4 sm:my-8 overflow-hidden w-full">
+      <Box className="xl:container mx-auto px-5 h-full my-2 sm:my-4 overflow-hidden w-full">
         <Outlet />
       </Box>
     </Box>

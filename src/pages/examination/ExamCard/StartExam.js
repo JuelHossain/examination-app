@@ -19,7 +19,7 @@ const StartExam = ({ id }) => {
       <Modal
         overlayOpacity={0.1}
         overlayBlur={1}
-        size={"xl"}
+        size={1000}
         opened={opened}
         onClose={toggle}
       >

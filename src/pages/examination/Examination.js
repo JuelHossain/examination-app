@@ -1,4 +1,4 @@
-import { LoadingOverlay, Notification } from "@mantine/core";
+import { LoadingOverlay, Notification, ScrollArea } from "@mantine/core";
 import { useGetExamsQuery } from "../../features/exams/examApi";
 import ExamCard from "./ExamCard/ExamCard";
 
@@ -27,7 +27,21 @@ const Examination = () => {
       ></Notification>
     );
   }
-  return <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">{content}</div>;
+  return (
+    <ScrollArea
+      classNames={{
+        thumb: "bg-main-500 ",
+        scrollbar: "bg-main-100",
+      }}
+      scrollbarSize={15}
+      className="h-full "
+      offsetScrollbars
+    >
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 ">
+        {content}
+      </div>
+    </ScrollArea>
+  );
 };
 
 export default Examination;

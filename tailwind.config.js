@@ -7,9 +7,7 @@ module.exports = {
       colors: {
         main: colors.purple,
       },
-      screen: {
-        
-      }
+      screen: {},
     },
   },
   plugins: [],

@@ -12,7 +12,7 @@ export default function Options({ options, index, form }) {
         }
       }}
       value={questions[index].answered}
-      className="grid grid-cols-2 justify-items-center "
+      className="grid sm:grid-cols-2 justify-items-center w-full items-center justify-center   "
     >
       {Object.keys(options).map((option) => {
         let color;

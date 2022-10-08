@@ -135,8 +135,8 @@ const QandA = ({ exam, result }) => {
           Back
         </Button>
         {values?.questions?.length === active ? (
-          <Button className="bg-main-500" component={Link} to="/dashboard">
-            DashBoard
+          <Button className="bg-main-500" component={Link} to="/dashboard/exam-result">
+            Exam Results
           </Button>
         ) : (
           <Button

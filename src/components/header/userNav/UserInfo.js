@@ -19,7 +19,7 @@ export default function UserInfo({ author }) {
         match ? "bg-main-500 text-main-50" : "bg-main-200 text-main-500"
       }`}
     >
-      <p className="font-semibold  capitalize">{author || name}</p>
+      <p className="font-semibold truncate  capitalize">{author || name}</p>
       {admin || author ? <IconUserCheck size={18} /> : <IconUser size={18} />}
     </Group>
   );

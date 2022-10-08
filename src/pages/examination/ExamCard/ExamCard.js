@@ -28,13 +28,13 @@ const ExamCard = ({ id }) => {
   return (
     <Stack className={` p-3 gap-3 bg-main-500/50 hover:bg-main-700 duration-300 rounded-md shadow-md border border-main-900/50 shadow-main-300 justify-between relative ${result && "border-green-500  bg-green-200/20"}`}>
       <LoadingOverlay visible={examLoading} />
-      <p className="text-xl font-semibold text-main-700 bg-main-200 py-1 px-2 rounded-md">
+      <p className="text-xl font-semibold text-main-700 bg-main-200 py-1 px-2 rounded-md truncate">
         {title}
       </p>
       <p className="bg-main-100 text-main-700 px-2 py-1 rounded-md flex-1">
         {description}
       </p>
-      <Group position="apart">
+      <Group position="apart" noWrap>
         <UserInfo author={authorName} />
         <StartExam id={id} />
       </Group>

@@ -4,7 +4,7 @@ import React from "react";
 const ExamHallTitle = ({ exam, result }) => {
   const { title, description } = exam;
   return (
-    <Stack spacing={5} className={"px-20"}>
+    <Stack spacing={5} className={"sm:px-10 md:px-20"}>
       <Text className="text-center text-2xl font-bold text-main-500">
         Welcome To The {title}
       </Text>
