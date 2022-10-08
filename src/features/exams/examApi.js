@@ -26,6 +26,11 @@ export const examApi = apiSlice.injectEndpoints({
               }
             )
           );
+          dispatch(
+            examApi.util.updateQueryData("getExams", undefined, (draft) => {
+              draft.push(data);
+            })
+          );
         } catch {}
       },
     }),

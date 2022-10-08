@@ -1,11 +1,11 @@
 import { Group } from "@mantine/core";
-import { IconUser } from "@tabler/icons";
+import { IconUser, IconUserCheck } from "@tabler/icons";
 import { useSelector } from "react-redux";
 import { useMatch, useNavigate } from "react-router-dom";
 import { selectUser } from "../../../features/auth/authSelector";
 
-export default function UserInfo() {
-  const { name } = useSelector(selectUser);
+export default function UserInfo({ author }) {
+  const { name, admin } = useSelector(selectUser);
   const navigate = useNavigate();
   const match = useMatch("/user");
 
@@ -19,8 +19,8 @@ export default function UserInfo() {
         match ? "bg-main-500 text-main-50" : "bg-main-200 text-main-500"
       }`}
     >
-      <p className="font-semibold  capitalize">{name}</p>
-      <IconUser size={18} />
+      <p className="font-semibold  capitalize">{author || name}</p>
+      {admin || author ? <IconUserCheck size={18} /> : <IconUser size={18} />}
     </Group>
   );
 }

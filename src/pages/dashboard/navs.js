@@ -13,6 +13,11 @@ export const adminNav = [
   },
   { name: "manage Exam", link: "manage-exam", icon: IconManualGearbox },
   { name: "users", link: "users", icon: IconUserPlus },
+  {
+    name: "Exam Result",
+    link: "exam-result",
+    icon: IconFileSpreadsheet,
+  },
 ];
 export const userNav = [
   {

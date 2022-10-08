@@ -39,11 +39,12 @@ function App() {
               <Route path="create-exam" element={<CreateExam />} />
               <Route path="manage-exam" element={<ManageExam />} />
               <Route path="users" element={<Users />} />
+              <Route path="exam-result" element={<ExamResult />} />
             </>
           ) : (
             <>
               <Route index element={<ExamResult />} />
-              <Route pathname="exam-result" element={<ExamResult />} />
+              <Route path="exam-result" element={<ExamResult />} />
             </>
           )}
         </Route>

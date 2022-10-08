@@ -1,8 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { ActionIcon, Tooltip } from "@mantine/core";
-import { randomId } from "@mantine/hooks";
 import { IconListCheck } from "@tabler/icons";
-import { getRandomNumber } from "../../../../utils/random";
 const options = ["A", "B", "C", "D"];
 
 const FillForm = ({ form }) => {
@@ -20,8 +18,8 @@ const FillForm = ({ form }) => {
           C: faker.lorem.sentence(2),
           D: faker.lorem.sentence(2),
         },
-        answer: options[getRandomNumber(0, options.length - 1)],
-        key: randomId(),
+        answer: options[faker.datatype.number(3)],
+        key: faker.datatype.uuid(),
       })),
     };
     setValues(value);
