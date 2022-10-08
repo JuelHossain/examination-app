@@ -7,7 +7,11 @@ const ManageUser = () => {
   const { data, isLoading } = useGetUsersQuery();
 
   return (
-    <Paper withBorder shadow={"sm"} className=" p-4 pr-2 space-y-2 flex-1 basis-60 ">
+    <Paper
+      withBorder
+      shadow={"sm"}
+      className=" p-4  space-y-2 flex-1 basis-60 "
+    >
       <LoadingOverlay visible={isLoading} />
       <p className="text-xl font-bold text-gray-600 text-center">
         Manage Users
