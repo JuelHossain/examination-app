@@ -1,1 +1,1 @@
-export const apiURL = "http://localhost:5000";
+export const apiURL = "https://examination-app-server.glitch.me";
