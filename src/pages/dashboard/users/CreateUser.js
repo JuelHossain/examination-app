@@ -1,6 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { Button, Group, Paper, PasswordInput, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { showNotification } from "@mantine/notifications";
+import { IconCheck } from "@tabler/icons";
 import React, { useEffect } from "react";
 import { useCreateUserMutation } from "../../../features/auth/authApi";
 
@@ -24,7 +26,14 @@ const CreateUser = () => {
     setValues({ name, email });
   };
   useEffect(() => {
-    reset();
+    if (isSuccess) {
+      reset();
+      showNotification({
+        title: `${values.name} created Successfully`,
+        color: "green",
+        icon: <IconCheck />,
+      });
+    }
   }, [isSuccess]);
   return (
     <Paper
