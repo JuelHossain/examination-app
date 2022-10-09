@@ -1,1 +1,1 @@
-export const selectColor = state => state.exam.color;
+export const selectColor = (state) => state.exam.color;

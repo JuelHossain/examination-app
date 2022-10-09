@@ -1,50 +1,15 @@
-import {
-  Center,
-  Group,
-  Paper,
-  RingProgress,
-  SimpleGrid,
-  Text,
-} from "@mantine/core";
-import { IconArrowDownRight, IconArrowUpRight } from "@tabler/icons";
+import { LoadingOverlay, SimpleGrid } from "@mantine/core";
+import useResultData from "../../../hooks/useResultData";
+import StatList from "./StateList";
 
-const icons = {
-  up: IconArrowUpRight,
-  down: IconArrowDownRight,
-};
-
-export default function StatsRing({ data }) {
+export default function StatsRing() {
+  const [data, dataLoading] = useResultData();
   const stats = data.map((stat) => {
-    const Icon = icons[stat.icon];
-    return (
-      <Paper withBorder radius="md" p="xs" key={stat.label}>
-        <Group>
-          <RingProgress
-            size={80}
-            roundCaps
-            thickness={8}
-            sections={[{ value: stat.progress, color: stat.color }]}
-            label={
-              <Center>
-                <Icon size={22} stroke={1.5} />
-              </Center>
-            }
-          />
-
-          <div>
-            <Text color="dimmed" size="xs" transform="uppercase" weight={700}>
-              {stat.label}
-            </Text>
-            <Text weight={700} size="xl">
-              {stat.stats}
-            </Text>
-          </div>
-        </Group>
-      </Paper>
-    );
+    return <StatList key={stat.id} stat={stat} />;
   });
   return (
     <SimpleGrid cols={3} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
+      <LoadingOverlay visible={dataLoading} />
       {stats}
     </SimpleGrid>
   );

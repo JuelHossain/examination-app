@@ -1,52 +1,40 @@
 import { Button, Group, Stepper } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { randomId, useDisclosure } from "@mantine/hooks";
+import { randomId } from "@mantine/hooks";
 import { IconCheck, IconCircleX } from "@tabler/icons";
 
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  useGetUserQuery,
-  useUpdateUserMutation,
-} from "../../../features/auth/authApi";
-import { selectUser } from "../../../features/auth/authSelector";
-import ConfirmSubmission from "./ConfirmSubmition";
-import NotSelectedError from "./NotSelectedError";
+import { useExamHall } from "../../../../context/examHallContext";
+import { useUpdateUserMutation } from "../../../../features/auth/authApi";
+import { selectUser } from "../../../../features/auth/authSelector";
+import useExamHallForm from "../../../../hooks/useExamHallForm";
+import useStepper from "../../../../hooks/useStepper";
+import ConfirmSubmission from "../overlays/ConfirmSubmition";
+import NotSelectedError from "../overlays/NotSelectedError";
 import QuestionList from "./QuestionList";
 
-const QandA = ({ exam, result }) => {
-  const { questions } = exam;
+const QandA = () => {
   const { _id: id } = useSelector(selectUser);
-  const { data: { exams: userExams } = {} } = useGetUserQuery(id);
+  const { exam: { _id: examId } = {}, result, userExams } = useExamHall();
+  const form = useExamHallForm(examId);
+  const { values } = form ?? {};
+  const { questions, mark } = values ?? {};
 
-  const [active, setActive] = useState(0);
-  const [isError, { toggle: toggleError, close: closeError }] = useDisclosure();
-  const [isConfirm, { toggle: toggleConfirm }] = useDisclosure();
+  const {
+    active,
+    isError,
+    isConfirm,
+    toggleError,
+    toggleConfirm,
+    goToNextStep,
+    nextStep,
+    prevStep,
+    stepHandler,
+  } = useStepper(questions);
 
-  const form = useForm();
-  const { setValues, values } = form;
-  useEffect(() => {
-    const initialResult = {
-      ...exam,
-      questions: questions.map((question) => ({
-        ...question,
-        answered: "",
-        mark: 0,
-      })),
-    };
-    if (result) {
-      setValues({ ...result, result: true });
-      setActive(questions.length);
-    } else {
-      setValues(initialResult);
-    }
-  }, [result]);
   const [updateUser] = useUpdateUserMutation();
-  const isAnswered = values.questions?.[active]?.answered;
-  const isLastQ = questions.length - 1 === active;
   const submitHandler = () => {
-    const mark = values.questions.reduce((total, q) => {
+    const mark = questions.reduce((total, q) => {
       if (q.answered === q.answer) {
         return total + 1;
       } else {
@@ -64,35 +52,15 @@ const QandA = ({ exam, result }) => {
     goToNextStep();
   };
 
-  const goToNextStep = () =>
-    setActive((current) =>
-      current < questions.length ? current + 1 : current
-    );
-  const nextStep = () => {
-    if (isAnswered) {
-      closeError();
-      if (isLastQ) {
-        toggleConfirm();
-      } else {
-        goToNextStep();
-      }
-    } else {
-      toggleError();
-    }
-  };
-  const prevStep = () => {
-    setActive((current) => (current > 0 ? current - 1 : current));
-  };
-
   return (
     <>
       <Stepper
         color={"green"}
         active={active}
-        onStepClick={setActive}
+        onStepClick={stepHandler}
         breakpoint="sm"
       >
-        {values.questions?.map((question, index) => {
+        {questions?.map((question, index) => {
           return (
             <Stepper.Step
               color={
@@ -126,7 +94,7 @@ const QandA = ({ exam, result }) => {
         })}
         <Stepper.Completed key={randomId()}>
           <p className="text-center text-xl font-bold  bg-main-500 p-3 text-main-50 dark:bg-main-900 dark:text-main-200 rounded-md">
-            You Have Got {values?.mark} mark In Total
+            You Have Got {mark} mark In Total
           </p>
         </Stepper.Completed>
       </Stepper>
@@ -134,7 +102,7 @@ const QandA = ({ exam, result }) => {
         <Button variant="default" onClick={prevStep}>
           Back
         </Button>
-        {values?.questions?.length === active ? (
+        {questions?.length === active ? (
           <Button
             className="bg-main-500 dark:bg-main-900 dark:text-main-200"
             component={Link}

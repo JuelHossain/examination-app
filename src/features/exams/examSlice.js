@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const createExamSlice = createSlice({
-  name: "createExam",
+  name: "exam",
   initialState,
   reducers: {
     setColor: (state, action) => {
