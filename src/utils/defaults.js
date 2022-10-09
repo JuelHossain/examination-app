@@ -1,1 +1,1 @@
-export const apiURL = "https://examination-app-server.glitch.me";
+export const apiURL = "https://examination-app-server.herokuapp.com";
