@@ -15,7 +15,7 @@ const CreateExam = () => {
   const user = useSelector(selectUser);
   const form = useForm(initialFormValues);
 
-  const { reset, onSubmit, setValues } = form;
+  const { reset, onSubmit } = form;
   const [createExam, { isSuccess, isError, isLoading }] =
     useCreateExamMutation();
   useEffect(() => {
@@ -44,13 +44,13 @@ const CreateExam = () => {
       component="form"
       withBorder
       shadow={"xs"}
-      className="flex-1 bg-main-50/20 flex flex-col gap-4"
+      className="flex-1 flex flex-col gap-4"
     >
       <LoadingOverlay visible={isLoading} />
       <CardTitle form={form} title="Create A Exam" />
       <Form form={form} />
       <Group>
-        <Button size="xl" className="bg-main-500 flex-1" type="submit">
+        <Button size="xl" className="bg-main-500 flex-1 dark:bg-main-900 dark:text-main-200" type="submit">
           Create Exam
         </Button>
       </Group>

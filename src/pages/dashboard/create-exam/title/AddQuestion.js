@@ -31,14 +31,14 @@ const AddQuestion = ({ form }) => {
   return (
     <Tooltip
       classNames={{
-        tooltip: "bg-main-500",
+        tooltip: "bg-main-500 dark:bg-main-900 dark:text-main-200",
       }}
       label="Add Another question"
       withArrow
       position="left"
     >
       <ActionIcon
-        className="bg-main-500"
+        className="bg-main-500 dark:bg-main-900 dark:text-main-200"
         variant="filled"
         onClick={addQuestion}
       >

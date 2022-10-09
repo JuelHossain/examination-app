@@ -11,7 +11,7 @@ const Logout = () => {
     <ActionIcon
       size={"lg"}
       variant="filled"
-      className="bg-main-500"
+      className="bg-main-500 dark:bg-main-900 dark:text-main-200"
       onClick={() => {
         dispatch(userLoggedOut());
       }}

@@ -125,7 +125,7 @@ const QandA = ({ exam, result }) => {
           );
         })}
         <Stepper.Completed key={randomId()}>
-          <p className="text-center text-xl font-bold  bg-main-500 p-3 text-main-50">
+          <p className="text-center text-xl font-bold  bg-main-500 p-3 text-main-50 dark:bg-main-900 dark:text-main-200 rounded-md">
             You Have Got {values?.mark} mark In Total
           </p>
         </Stepper.Completed>
@@ -135,12 +135,16 @@ const QandA = ({ exam, result }) => {
           Back
         </Button>
         {values?.questions?.length === active ? (
-          <Button className="bg-main-500" component={Link} to="/dashboard/exam-result">
+          <Button
+            className="bg-main-500 dark:bg-main-900 dark:text-main-200"
+            component={Link}
+            to="/dashboard/exam-result"
+          >
             Exam Results
           </Button>
         ) : (
           <Button
-            className="bg-main-500"
+            className="bg-main-500 dark:bg-main-900 dark:text-main-200"
             onClick={result ? goToNextStep : nextStep}
           >
             Next step

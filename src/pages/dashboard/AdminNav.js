@@ -1,4 +1,4 @@
-import { ActionIcon, Affix, Stack } from "@mantine/core";
+import { ActionIcon, Affix, Card } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconIndentDecrease, IconIndentIncrease } from "@tabler/icons";
 import React, { useEffect } from "react";
@@ -19,9 +19,10 @@ const AdminNav = ({ opened, handlers, navs }) => {
   return (
     <>
       {opened && (
-        <Stack
+        <Card
+          withBorder
           spacing={10}
-          className="h-full  basis-48 bg-main-50 sm:bg-main-50/20 py-4 px-2 border shadow-sm fixed sm:static z-20 "
+          className="h-full  basis-48 py-4 px-2  shadow-sm fixed sm:static z-20 gap-2 flex flex-col"
         >
           <ActionIcon
             onClick={toggle}
@@ -42,10 +43,10 @@ const AdminNav = ({ opened, handlers, navs }) => {
                     close();
                   }
                 }}
-                className={`font-semibold capitalize py-1 px-2   rounded flex gap-2 hover:bg-main-500 hover:text-main-50 duration-300 ${
+                className={`font-semibold capitalize py-1 px-2   rounded flex gap-2 hover:bg-main-500 hover:text-main-50 dark:hover:bg-main-900 dark:hover:text-main-200 duration-300 ${
                   (pathname === "/dashboard" && nav?.index) || match
-                    ? "bg-main-500 text-main-50 "
-                    : "bg-main-200 text-main-600 "
+                    ? "bg-main-500 text-main-50 dark:bg-main-900 dark:text-main-200 "
+                    : "bg-main-200 text-main-600 dark:bg-main-900/50 dark:text-main-400 "
                 }`}
                 to={nav.link}
               >
@@ -54,7 +55,7 @@ const AdminNav = ({ opened, handlers, navs }) => {
               </Link>
             );
           })}
-        </Stack>
+        </Card>
       )}
       {opened || (
         <Affix position={{ left: 0, top: 69 }} className="sm:hidden">

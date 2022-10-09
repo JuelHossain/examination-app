@@ -5,16 +5,12 @@ import ManageAdmin from "./ManageAdmin";
 import ManageUser from "./ManageUser";
 const Users = () => {
   return (
-    <Card
-      withBorder
-      shadow={"xs"}
-      className="flex-1 bg-main-50/20 flex gap-4 items-start"
-    >
+    <Card withBorder shadow={"xs"} className="flex-1 flex gap-4 items-start">
       <LoadingOverlay />
       <ScrollArea
         classNames={{
           thumb: "bg-main-500 ",
-          scrollbar: "bg-main-100",
+          scrollbar: "bg-main-100 dark:bg-main-900/50",
         }}
         scrollbarSize={15}
         className="h-full w-full "

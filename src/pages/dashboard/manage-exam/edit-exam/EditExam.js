@@ -24,7 +24,7 @@ const EditExam = ({ id, toggle }) => {
   } = useGetExamQuery(id);
 
   const form = useForm(initialFormValues);
-  const { reset, onSubmit, setValues, values } = form;
+  const { reset, onSubmit, setValues } = form;
 
   useEffect(() => {
     if (gotExam) {
@@ -64,12 +64,16 @@ const EditExam = ({ id, toggle }) => {
       component="form"
       withBorder
       shadow={"xs"}
-      className="flex-1 bg-main-50/20 flex flex-col gap-4"
+      className="flex-1  flex flex-col gap-4"
     >
       <LoadingOverlay visible={updating || gettingExam} />
       <CardTitle form={form} title="Edit The Exam" />
       <Form form={form} />
-      <Button size="lg" className="bg-main-500" type="submit">
+      <Button
+        size="lg"
+        className="bg-main-500 dark:bg-main-900 dark:text-main-200"
+        type="submit"
+      >
         Update Exam
       </Button>
     </Card>

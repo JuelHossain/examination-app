@@ -1,12 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  color: {
+    name: "purple",
+    class: "bg-purple-500",
+  },
+};
 
 const createExamSlice = createSlice({
   name: "createExam",
   initialState,
-  reducers: {},
+  reducers: {
+    setColor: (state, action) => {
+      state.color = action.payload;
+      localStorage.setItem("color", JSON.stringify(action.payload));
+    },
+  },
 });
 
-// export const {  } = createExamSlice.actions;
+export const { setColor } = createExamSlice.actions;
 export default createExamSlice.reducer;

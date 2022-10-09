@@ -1,4 +1,4 @@
-import { Card, LoadingOverlay } from "@mantine/core";
+import { Card, CloseButton, LoadingOverlay } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetUserQuery } from "../../../features/auth/authApi";
@@ -21,9 +21,9 @@ const ExamHall = ({ id, toggle }) => {
   }, [userExams, id]);
 
   const { data, isLoading: examLoading } = useGetExamQuery(id);
-  console.log(result);
+
   return (
-    <Card>
+    <Card className="p-5 sm:p-10">
       <LoadingOverlay visible={examLoading || examsLoading || loading} />
       {loading || (
         <>
@@ -31,6 +31,7 @@ const ExamHall = ({ id, toggle }) => {
           <QandA exam={data} result={result} />
         </>
       )}
+      <CloseButton variant="filled" className="absolute top-3 right-3" onClick={toggle} />
     </Card>
   );
 };

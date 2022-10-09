@@ -6,7 +6,7 @@ import { selectUser } from "../../../features/auth/authSelector";
 import UserList from "./UserList";
 
 const ManageAdmin = () => {
-  const { data, isLoading } = useGetUsersQuery('admin');
+  const { data, isLoading } = useGetUsersQuery("admin");
   const { email } = useSelector(selectUser);
 
   return (
@@ -18,7 +18,7 @@ const ManageAdmin = () => {
       <ScrollArea
         classNames={{
           thumb: "bg-main-500 ",
-          scrollbar: "bg-main-100",
+          scrollbar: "bg-main-100 dark:bg-main-900/50",
         }}
         scrollbarSize={15}
         className="h-40 "

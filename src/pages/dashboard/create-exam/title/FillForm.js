@@ -27,13 +27,13 @@ const FillForm = ({ form }) => {
   return (
     <Tooltip
       classNames={{
-        tooltip: "bg-main-500",
+        tooltip: "bg-main-500 dark:bg-main-900 dark:text-main-200",
       }}
       label="Fill The Form With Random Data"
       withArrow
       position="left"
     >
-      <ActionIcon variant="filled" onClick={fillForm} className="bg-main-500">
+      <ActionIcon variant="filled" onClick={fillForm} className="bg-main-500 dark:bg-main-900 dark:text-main-200">
         <IconListCheck />
       </ActionIcon>
     </Tooltip>

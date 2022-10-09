@@ -9,9 +9,7 @@ import StatsRing from "./States";
 
 const ExamResult = () => {
   const { _id: id } = useSelector(selectUser);
-  const {
-    data: { exams }={},
-  } = useGetUserQuery(id);
+  const { data: { exams } = {} } = useGetUserQuery(id);
   const [data, setData] = useState([]);
   useEffect(() => {
     if (exams) {
@@ -43,7 +41,7 @@ const ExamResult = () => {
       <ScrollArea
         classNames={{
           thumb: "bg-main-500 ",
-          scrollbar: "bg-main-100",
+          scrollbar: "bg-main-100 dark:bg-main-900/50",
         }}
         scrollbarSize={15}
         className="h-full "

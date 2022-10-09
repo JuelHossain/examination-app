@@ -55,10 +55,16 @@ const CreateUser = () => {
         readOnly
       />
       <Group grow>
-        <Button onClick={createRandomUser} className="bg-main-500">
+        <Button
+          onClick={createRandomUser}
+          className="bg-main-500 dark:bg-main-900 dark:text-main-200"
+        >
           Create random User
         </Button>
-        <Button className="bg-main-500" type="submit">
+        <Button
+          className="bg-main-500 dark:bg-main-900 dark:text-main-200"
+          type="submit"
+        >
           Create User
         </Button>
       </Group>

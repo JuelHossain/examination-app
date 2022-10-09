@@ -13,18 +13,19 @@ const DeleteButton = ({ id }) => {
       <Popover.Target>
         <ActionIcon
           onClick={toggle}
-          className="bg-main-500"
+          className="bg-main-500 dark:bg-main-900 dark:text-main-200"
           size={"xl"}
           variant="filled"
         >
           <IconTrash />
         </ActionIcon>
       </Popover.Target>
-      <Popover.Dropdown className="bg-main-50">
+      <Popover.Dropdown className="bg-main-50 dark:bg-gray-900 dark:text-main-200">
         <Stack spacing={8}>
           <p className="font-bold">Are You sure ?</p>
           <Group noWrap>
             <Button
+              className="bg-green-500"
               onClick={() => {
                 toggle();
               }}
@@ -34,6 +35,7 @@ const DeleteButton = ({ id }) => {
               No
             </Button>
             <Button
+              className="bg-red-500"
               onClick={() => {
                 deleteExam(id);
                 toggle();

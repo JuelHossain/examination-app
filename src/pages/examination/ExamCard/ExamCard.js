@@ -1,16 +1,21 @@
-import { Group, LoadingOverlay, Stack } from "@mantine/core";
-import { IconCircleCheck } from "@tabler/icons";
+import { Card, Group, LoadingOverlay } from "@mantine/core";
+import { IconCircleCheck, IconUserCheck } from "@tabler/icons";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import UserInfo from "../../../components/header/userNav/UserInfo";
 import { useGetUserQuery } from "../../../features/auth/authApi";
 import { selectUser } from "../../../features/auth/authSelector";
 import { useGetExamQuery } from "../../../features/exams/examApi";
+
 import StartExam from "./StartExam";
 
 const ExamCard = ({ id }) => {
   const {
-    data: { title, description, createdBy: { name: authorName } = {} } = {},
+    data: {
+      title,
+      description,
+      questions,
+      createdBy: { name: authorName } = {},
+    } = {},
     isLoading: examLoading,
   } = useGetExamQuery(id);
 
@@ -26,24 +31,46 @@ const ExamCard = ({ id }) => {
   }, [userExams, id]);
 
   return (
-    <Stack className={` p-3 gap-3 bg-main-500/50 hover:bg-main-700 duration-300 rounded-md shadow-md border border-main-900/50 shadow-main-300 justify-between relative ${result && "border-green-500  bg-green-200/20"}`}>
-      <LoadingOverlay visible={examLoading} />
-      <p className="text-xl font-semibold text-main-700 bg-main-200 py-1 px-2 rounded-md truncate">
-        {title}
-      </p>
-      <p className="bg-main-100 text-main-700 px-2 py-1 rounded-md flex-1">
-        {description}
-      </p>
-      <Group position="apart" noWrap>
-        <UserInfo author={authorName} />
+    <Card
+      withBorder
+      className={`flex flex-col gap-2 p-2 pt-0 justify-between  relative ${
+        result && "border-green-500/50  bg-green-200/20 dark:bg-green-800/20"
+      }`}
+    >
+      <LoadingOverlay visible={examLoading || examsLoading} />
+      <Card.Section
+        withBorder
+        className="bg-main-100/50 dark:bg-main-900/50 dark:text-main-400/80"
+      >
+        <p className="text-xl font-semibold  p-4  rounded-md truncate">
+          {title}
+        </p>
+      </Card.Section>
+
+      <Card.Section
+        className="flex-1 flex flex-col justify-between gap-2"
+        withBorder
+      >
+        <p className=" px-4 py-1 rounded-md line-clamp-2">{description}</p>
+        <p className=" px-4 py-1 text-sm dark:bg-main-50/20 bg-main-400/20 rounded-md  line-clamp-2">
+          {result
+            ? `Your Mark : ${result?.mark}/${questions?.length}`
+            : `Total Mark: ${questions?.length}`}
+        </p>
+      </Card.Section>
+      <Group position="apart">
+        <Group spacing={3}>
+          <IconUserCheck size={14} />
+          <p className="capitalize text-xs">{authorName}</p>
+        </Group>
         <StartExam id={id} />
       </Group>
       {result && (
         <div className="absolute top-2 right-2 bg-green-500 text-green-50 rounded-full">
-          <IconCircleCheck size={30} />
+          <IconCircleCheck size={25} />
         </div>
       )}
-    </Stack>
+    </Card>
   );
 };
 

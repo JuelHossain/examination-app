@@ -10,19 +10,22 @@ const ExamList = ({ id }) => {
   return (
     <Group
       key={id}
-      className=" p-2 bg-main-200 rounded-md text-main-800 relative justify-between pr-6"
+      className="dark:bg-main-900/50 dark:text-main-400 p-2 bg-main-200 rounded-md text-main-800 relative justify-between pr-6"
     >
       <Group noWrap>
         <Avatar size={"lg"} color="grape">
           <IconBook />
         </Avatar>
-        <Box className="bg-main-200">
+        <Box className="sm:max-w-[500px]">
           <Text className="text-xl font-semibold">{title}</Text>
-          <Text>{description}</Text>
+          <Text className="line-clamp-2">{description}</Text>
         </Box>
       </Group>
       <Group>
-        <Button className="bg-main-500 " size="md">
+        <Button
+          className="bg-main-500 dark:bg-main-900 dark:text-main-200 "
+          size="md"
+        >
           Questions : {questions?.length}
         </Button>
         <EditButton id={id} />

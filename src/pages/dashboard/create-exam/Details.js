@@ -1,12 +1,10 @@
-import { Stack, Textarea, TextInput } from "@mantine/core";
+import { Textarea, TextInput } from "@mantine/core";
+import FormWrapper from "./FormWrapper";
 
 const Details = ({ form }) => {
   const { getInputProps } = form;
   return (
-    <Stack className="flex-1 border shadow-sm p-2 rounded-md basis-60">
-      <p className="text-center font-semibold text-lg bg-main-100 py-1 text-main-500 shadow-sm border rounded-md">
-        Examination Detail
-      </p>
+    <FormWrapper title={"About The Exam"}>
       <TextInput
         required
         {...getInputProps("title")}
@@ -19,7 +17,7 @@ const Details = ({ form }) => {
         placeholder="Say something about your exam"
         size="md"
       />
-    </Stack>
+    </FormWrapper>
   );
 };
 

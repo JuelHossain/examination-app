@@ -24,14 +24,14 @@ const Examination = () => {
         title=" No Exams Found"
         className="max-w-xs"
         color={"red"}
-      ></Notification>
+      />
     );
   }
   return (
     <ScrollArea
       classNames={{
         thumb: "bg-main-500 ",
-        scrollbar: "bg-main-100",
+        scrollbar: "bg-main-100 dark:bg-main-900/50",
       }}
       scrollbarSize={15}
       className="h-full "

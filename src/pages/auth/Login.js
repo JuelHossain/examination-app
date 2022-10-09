@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Notification,
+  Paper,
   PasswordInput,
   Text,
   TextInput,
@@ -42,15 +43,18 @@ export default function Login() {
     }
   };
   return (
-    <Box className="h-screen flex justify-center items-center flex-col">
-      <Card>
-        <Title align="center" className="font-black text-main-500">
+    <Paper className="h-screen flex justify-center items-center flex-col gap-2">
+      <Box>
+        <Title
+          align="center"
+          className="font-black text-main-500 dark:text-main-800"
+        >
           Please Login!
         </Title>
         <Text color="dimmed" size="sm" align="center" mt={5}>
           Only registered student can login and participate in exams
         </Text>
-      </Card>
+      </Box>
       <Card
         component="form"
         withBorder
@@ -80,11 +84,16 @@ export default function Login() {
             onClose={() => setError(null)}
           ></Notification>
         )}
-        <Button fullWidth mt="xl" type="submit" className="bg-main-500">
+        <Button
+          fullWidth
+          mt="xl"
+          type="submit"
+          className="bg-main-500  dark:text-main-400 dark:bg-main-900/50"
+        >
           Sign in
         </Button>
         <AutoLogin setValues={setValues} />
       </Card>
-    </Box>
+    </Paper>
   );
 }

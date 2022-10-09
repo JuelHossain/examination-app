@@ -10,7 +10,7 @@ const Logo = () => {
       to="/"
       noWrap
       spacing={5}
-      className="bg-main-100 py-1 rounded-md px-2 text-main-500"
+      className="py-1 rounded-md px-3 text-main-500 dark:bg-main-900 dark:text-main-200 bg-main-200 "
     >
       <IconLicense className="w-auto h-5 sm:h-6" />
       <p className={`text-lg font-bold truncate sm:text-xl `}>

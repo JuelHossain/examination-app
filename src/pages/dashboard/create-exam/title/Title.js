@@ -18,7 +18,7 @@ const CardTitle = ({ form, title }) => {
     <Group position="apart">
       <Title
         order={4}
-        className="text-main-600 bg-main-100 py-1 px-2 rounded-md"
+        className="text-main-600 bg-main-100 dark:bg-main-900 dark:text-main-200 py-1 px-3 rounded-md"
       >
         {title}
       </Title>

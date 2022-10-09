@@ -54,7 +54,6 @@ export const authApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["getUsers"],
       onQueryStarted: async ({ id, patch }, { queryFulfilled, dispatch }) => {
-        console.log(patch);
         const patched = dispatch(
           authApi.util.updateQueryData("getUser", id, (draft) => {
             Object.assign(draft, patch);
@@ -83,7 +82,7 @@ export const authApi = apiSlice.injectEndpoints({
           })
         );
         const deletedAdmin = dispatch(
-          authApi.util.updateQueryData("getUsers", 'admin', (draft) => {
+          authApi.util.updateQueryData("getUsers", "admin", (draft) => {
             return draft.filter(
               (user) => user._id.toString() !== id.toString()
             );

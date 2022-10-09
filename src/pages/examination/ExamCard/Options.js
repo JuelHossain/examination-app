@@ -18,9 +18,9 @@ export default function Options({ options, index, form }) {
         let color;
         if (result) {
           if (option === questions[index].answer) {
-            color = "bg-green-100";
+            color = "bg-green-200 dark:bg-green-800/50";
           } else if (option === questions[index].answered) {
-            color = "bg-red-100";
+            color = "bg-red-200 dark:bg-red-800/50";
           }
         }
         return (

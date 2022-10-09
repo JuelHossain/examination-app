@@ -8,7 +8,7 @@ const Form = ({ form }) => {
     <ScrollArea
       classNames={{
         thumb: "bg-main-500 ",
-        scrollbar: "bg-main-100",
+        scrollbar: "bg-main-100 dark:bg-main-900/50",
       }}
       scrollbarSize={15}
       className="h-full "

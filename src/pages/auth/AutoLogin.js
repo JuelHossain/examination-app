@@ -19,10 +19,16 @@ const AutoLogin = ({ setValues }) => {
     <>
       <LoadingOverlay visible={adminLoading || userLoading} />
       <Group grow>
-        <Button onClick={loginAsAdmin} className="bg-main-500">
+        <Button
+          onClick={loginAsAdmin}
+          className="bg-main-500  dark:text-main-400 dark:bg-main-900/50"
+        >
           Login As Admin
         </Button>
-        <Button onClick={loginAsUser} className="bg-main-500">
+        <Button
+          onClick={loginAsUser}
+          className="bg-main-500  dark:text-main-400 dark:bg-main-900/50"
+        >
           Login As User
         </Button>
       </Group>

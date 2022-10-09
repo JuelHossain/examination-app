@@ -1,4 +1,6 @@
-import { Stack, TextInput } from "@mantine/core";
+import { TextInput } from "@mantine/core";
+import { randomId } from "@mantine/hooks";
+import FormWrapper from "../FormWrapper";
 import Options from "./Options";
 import RemoveQuestion from "./RemoveQuestion";
 
@@ -6,26 +8,31 @@ const Questions = ({ form }) => {
   const { values, getInputProps } = form;
   const questions = values?.questions?.map((q, index) => {
     const n = index + 1;
+
+    const questionProps = {
+      ...getInputProps(`questions.${index}.question`),
+      required: true,
+      placeholder: `Question ?`,
+      size: "md",
+    };
+
+    const optionProps = {
+      index,
+      options: q.options,
+      form,
+    };
+
+    const wrapperProps = {
+      key: index,
+      title: `Question ${n}`,
+    };
+
     return (
-      <Stack
-        spacing={10}
-        key={index}
-        className="flex-1 border shadow-sm p-2 rounded-md basis-60 relative"
-      >
-        <p className="text-center font-semibold text-lg bg-main-100 py-1 text-main-500 shadow-sm border rounded-md">
-          Question {n}
-        </p>
-        <TextInput
-          {...getInputProps(`questions.${index}.question`)}
-          required
-          placeholder={`Question ?`}
-          size="md"
-        />
-
-        <Options index={index} options={q.options} form={form} />
-
-        <RemoveQuestion index={index} form={form} />
-      </Stack>
+      <FormWrapper {...wrapperProps}>
+        <TextInput {...questionProps} />
+        <Options {...optionProps} />
+        <RemoveQuestion {...optionProps} />
+      </FormWrapper>
     );
   });
 
