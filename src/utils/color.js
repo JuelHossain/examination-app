@@ -15,7 +15,6 @@ hexColors.forEach((a) => {
   });
   Object.assign(rgbColors, { [colorName]: rgbColorsObject });
 });
-console.log(rgbColors);
 
 export const colors = [
   { name: "pink", class: "bg-pink-500" },

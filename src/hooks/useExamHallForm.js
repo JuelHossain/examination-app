@@ -9,10 +9,11 @@ const useExamHallForm = (id) => {
   const { data: exam } = useGetExamQuery(id);
   const [result] = useResult(id);
   const { setValues } = form;
+  
   useEffect(() => {
     const initialResult = {
       ...exam,
-      questions: exam.questions.map((question) => ({
+      questions: exam?.questions.map((question) => ({
         ...question,
         answered: "",
         mark: 0,
@@ -23,7 +24,9 @@ const useExamHallForm = (id) => {
     } else {
       setValues(initialResult);
     }
-  }, [result]);
+  }, [result,exam,setValues]);
+
+
   return form;
 };
 

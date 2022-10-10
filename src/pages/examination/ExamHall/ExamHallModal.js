@@ -1,17 +1,17 @@
-import { LoadingOverlay, Modal } from "@mantine/core";
+import { Modal } from "@mantine/core";
 import React from "react";
 import { useSelector } from "react-redux";
 import { ExamHallProvider } from "../../../context/examHallContext";
-import { useGetExamQuery } from "../../../features/exams/examApi";
 import { selectColor } from "../../../features/exams/examSelector";
-import useResult from "../../../hooks/useResult";
+import useExamHallForm from "../../../hooks/useExamHallForm";
+import useStepper from "../../../hooks/useStepper";
 import ExamHall from "./ExamHall";
 
 const ExamHallModal = ({ id, opened, handler, ...props }) => {
   const color = useSelector(selectColor);
-  const { data: exam, isLoading } = useGetExamQuery(id);
-  const [result, loading, userExams] = useResult(id);
-  const contextValue = { exam, result, userExams, opened, handler };
+  const form = useExamHallForm(id);
+  const stepperFn = useStepper(form);
+  const contextValue = { form, stepperFn, opened, handler };
   return (
     <ExamHallProvider value={contextValue}>
       <Modal
@@ -22,12 +22,11 @@ const ExamHallModal = ({ id, opened, handler, ...props }) => {
         centered
         overlayOpacity={0.1}
         overlayBlur={1}
-        size={'auto'}
+        size={"auto"}
         opened={opened}
         onClose={handler.close}
         withCloseButton={false}
       >
-        <LoadingOverlay visible={isLoading || loading} />
         <ExamHall />
       </Modal>
     </ExamHallProvider>

@@ -1,7 +1,8 @@
 import { useDisclosure } from "@mantine/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const useStepper = (questions) => {
+const useStepper = (form) => {
+  const { questions, result } = form?.values ?? {};
   const [active, setActive] = useState(0);
   const [isError, { toggle: toggleError, close: closeError }] = useDisclosure();
   const [isConfirm, { toggle: toggleConfirm }] = useDisclosure();
@@ -39,10 +40,11 @@ const useStepper = (questions) => {
       setActive(e);
     }
   };
-  return {
+  const stepperStates = {
     active,
     isError,
     isConfirm,
+    setActive,
     toggleError,
     toggleConfirm,
     goToNextStep,
@@ -50,6 +52,14 @@ const useStepper = (questions) => {
     prevStep,
     stepHandler,
   };
+
+  useEffect(() => {
+    if (result) {
+      setActive(questions?.length);
+    }
+  }, [result, questions, setActive]);
+
+  return stepperStates;
 };
 
 export default useStepper;

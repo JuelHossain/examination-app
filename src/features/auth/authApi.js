@@ -60,10 +60,8 @@ export const authApi = apiSlice.injectEndpoints({
           })
         );
         try {
-          const { data } = await queryFulfilled;
-          console.log(data);
+          await queryFulfilled;
         } catch (err) {
-          console.log(err);
           patched.undo();
         }
       },

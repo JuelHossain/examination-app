@@ -3,7 +3,8 @@ import React from "react";
 import { useExamHall } from "../../../context/examHallContext";
 
 const ExamHallTitle = () => {
-  const { exam: { title, description } = {}, result } = useExamHall();
+  const { form: { values: { title, description, result } = {} } = {} } =
+    useExamHall();
   return (
     <Stack spacing={5} className={"sm:px-10 md:px-20"}>
       <Text className="text-center text-2xl font-bold text-main-500 ">

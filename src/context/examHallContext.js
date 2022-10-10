@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-export const ExamHallContext = createContext();
+export const ExamHallContext = createContext({});
 export const ExamHallProvider = ({ value, children }) => {
   return (
     <ExamHallContext.Provider value={value}>
