@@ -1,15 +1,15 @@
 import { useForm } from "@mantine/form";
 
 import { useEffect } from "react";
-import { useGetExamQuery } from "../features/exams/examApi";
-import useResult from "./useResult";
+import { useGetExamQuery } from "../../../features/exams/examApi";
+import useResult from "../../../hooks/useResult";
 
 const useExamHallForm = (id) => {
   const form = useForm();
   const { data: exam } = useGetExamQuery(id);
   const [result] = useResult(id);
   const { setValues } = form;
-  
+
   useEffect(() => {
     const initialResult = {
       ...exam,
@@ -24,8 +24,7 @@ const useExamHallForm = (id) => {
     } else {
       setValues(initialResult);
     }
-  }, [result,exam,setValues]);
-
+  }, [result, exam, setValues]);
 
   return form;
 };

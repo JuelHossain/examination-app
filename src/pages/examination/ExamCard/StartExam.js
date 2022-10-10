@@ -2,13 +2,20 @@ import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowRightTail } from "@tabler/icons";
 import React from "react";
-import { useExamCard } from "../../../context/examCardContext";
+import { useExamCard } from "../context/examCardContext";
 
 import ExamHallModal from "../ExamHall/ExamHallModal";
 
 const StartExam = () => {
   const [opened, handler] = useDisclosure();
   const { exam: { _id } = {} } = useExamCard();
+
+  // exam hall props
+  const examHallProps = {
+    id: _id,
+    opened,
+    handler,
+  };
   return (
     <>
       <Button
@@ -19,7 +26,7 @@ const StartExam = () => {
       >
         Start
       </Button>
-      <ExamHallModal id={_id} opened={opened} handler={handler} />
+      <ExamHallModal {...examHallProps} />
     </>
   );
 };

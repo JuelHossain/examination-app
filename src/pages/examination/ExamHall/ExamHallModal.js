@@ -1,13 +1,13 @@
 import { Modal } from "@mantine/core";
 import React from "react";
 import { useSelector } from "react-redux";
-import { ExamHallProvider } from "../../../context/examHallContext";
 import { selectColor } from "../../../features/exams/examSelector";
-import useExamHallForm from "../../../hooks/useExamHallForm";
-import useStepper from "../../../hooks/useStepper";
+import { ExamHallProvider } from "../context/examHallContext";
+import useExamHallForm from "../hooks/useExamHallForm";
+import useStepper from "../hooks/useStepper";
 import ExamHall from "./ExamHall";
 
-const ExamHallModal = ({ id, opened, handler, ...props }) => {
+const ExamHallModal = ({ id, opened, handler }) => {
   const color = useSelector(selectColor);
   const form = useExamHallForm(id);
   const stepperFn = useStepper(form);
@@ -15,7 +15,6 @@ const ExamHallModal = ({ id, opened, handler, ...props }) => {
   return (
     <ExamHallProvider value={contextValue}>
       <Modal
-        {...props}
         classNames={{
           modal: `p-0 ${color?.name}`,
         }}

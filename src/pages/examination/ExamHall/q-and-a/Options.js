@@ -1,5 +1,5 @@
 import { Chip } from "@mantine/core";
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 import useChipOption from "./useChipOption";
 
 export default function Options(props) {

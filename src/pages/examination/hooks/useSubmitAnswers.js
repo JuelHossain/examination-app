@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
+import { useUpdateUserMutation } from "../../../features/auth/authApi";
+import { selectUser } from "../../../features/auth/authSelector";
+import useUserExams from "../../../hooks/useUserExams";
+import getMark from "../../../utils/getMark";
 import { useExamHall } from "../context/examHallContext";
-import { useUpdateUserMutation } from "../features/auth/authApi";
-import { selectUser } from "../features/auth/authSelector";
-import getMark from "../utils/getMark";
-import useUserExams from "./useUserExams";
 
 const useSubmitAnswers = () => {
   const { _id: id } = useSelector(selectUser);

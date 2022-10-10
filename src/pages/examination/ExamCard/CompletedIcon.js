@@ -1,6 +1,6 @@
 import { IconCircleCheck } from "@tabler/icons";
 import React from "react";
-import { useExamCard } from "../../../context/examCardContext";
+import { useExamCard } from "../context/examCardContext";
 
 const CompletedIcon = () => {
   const { result } = useExamCard();

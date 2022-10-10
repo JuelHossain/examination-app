@@ -1,8 +1,9 @@
 import { Card, LoadingOverlay } from "@mantine/core";
 import React from "react";
-import { ExamCardProvider } from "../../../context/examCardContext";
 import { useGetExamQuery } from "../../../features/exams/examApi";
 import useResult from "../../../hooks/useResult";
+import { ExamCardProvider } from "../context/examCardContext";
+
 import CompletedIcon from "./CompletedIcon";
 import ExamCardBody from "./ExamCardBody";
 import ExamCardFooter from "./ExamCardFooter";
@@ -11,7 +12,6 @@ import ExamCardTitle from "./ExamCardTitle";
 const ExamCard = ({ id }) => {
   // getting exam
   const { data: exam, isLoading: examLoading } = useGetExamQuery(id);
-
   const [result, resultLoading] = useResult(id);
 
   const CardValue = { exam, result };

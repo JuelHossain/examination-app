@@ -1,7 +1,7 @@
 import { Stepper } from "@mantine/core";
 import { randomId } from "@mantine/hooks";
 
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 import CompletedMessage from "./CompletedMessage";
 import StepperActions from "./StepperActions";
 

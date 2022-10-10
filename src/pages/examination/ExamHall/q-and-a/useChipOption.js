@@ -1,6 +1,6 @@
 import { Chip } from "@mantine/core";
 import React from "react";
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 
 const useChipOption = ({ question, index }) => {
   const { form: { values: { result, questions } = {} } = {} } = useExamHall();

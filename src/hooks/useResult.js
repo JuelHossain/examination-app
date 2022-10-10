@@ -13,7 +13,7 @@ const useResult = (id) => {
     }
   }, [userExams, id]);
 
-  return [result, loading, userExams];
+  return [result, loading];
 };
 
 export default useResult;

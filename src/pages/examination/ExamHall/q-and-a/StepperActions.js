@@ -1,7 +1,7 @@
 import { Button, Group } from "@mantine/core";
 
 import { Link, useMatch } from "react-router-dom";
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 
 const StepperActions = () => {
   const { form: { values } = {}, stepperFn } = useExamHall();

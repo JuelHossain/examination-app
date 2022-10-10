@@ -33,6 +33,7 @@ function App() {
   const getTheme = window.localStorage.getItem("theme");
   const setTheme = (value) => window.localStorage.setItem("theme", value);
 
+  // setting theme in first load
   useEffect(() => {
     if (getTheme === "dark" || (!getTheme && systemColorScheme === "dark")) {
       setColorScheme("dark");
@@ -42,6 +43,8 @@ function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [getTheme, systemColorScheme, colorScheme, colors]);
+
+  // change dark theme
   const toggleColorScheme = () => {
     if (getTheme) {
       if (getTheme === "light") {
@@ -66,6 +69,7 @@ function App() {
     }
   };
 
+  // this is color
   const color = useSelector(selectColor);
 
   const authChecked = useAuthCheck();

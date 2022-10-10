@@ -1,12 +1,12 @@
 import { Button, Group, Notification, Overlay } from "@mantine/core";
 import { IconCheck } from "@tabler/icons";
 import React from "react";
-import { useExamHall } from "../../../../context/examHallContext";
-import useSubmitAnswers from "../../../../hooks/useSubmitAnswers";
+import { useExamHall } from "../../context/examHallContext";
+import useSubmitAnswers from "../../hooks/useSubmitAnswers";
 
-const ConfirmSubmission = ({ opened, toggle }) => {
+const ConfirmSubmission = () => {
   const submitAnswer = useSubmitAnswers();
-  const { stepperFn:{ isConfirm, toggleConfirm } = {} } = useExamHall();
+  const { stepperFn: { isConfirm, toggleConfirm } = {} } = useExamHall();
 
   return (
     isConfirm && (

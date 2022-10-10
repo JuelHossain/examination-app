@@ -1,7 +1,7 @@
 import { Stepper } from "@mantine/core";
 import { randomId } from "@mantine/hooks";
 import { IconCheck, IconCircleX } from "@tabler/icons";
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 import ConfirmSubmission from "../overlays/ConfirmSubmition";
 import NotSelectedError from "../overlays/NotSelectedError";
 import QuestionList from "./QuestionList";

@@ -15,6 +15,7 @@ const AdminNav = ({ opened, handlers, navs }) => {
     } else {
       open();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [small]);
   return (
     <>

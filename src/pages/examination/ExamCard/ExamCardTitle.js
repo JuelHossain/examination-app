@@ -1,5 +1,5 @@
 import { Card, Text } from "@mantine/core";
-import { useExamCard } from "../../../context/examCardContext";
+import { useExamCard } from "../context/examCardContext";
 
 const classes = {
   titleWrapper: "bg-main-100/50 dark:bg-main-900/50 dark:text-main-400/80",
@@ -7,7 +7,7 @@ const classes = {
 };
 
 const ExamCardTitle = () => {
-    const { exam: { title }={} } = useExamCard();
+  const { exam: { title } = {} } = useExamCard();
   return (
     <Card.Section withBorder className={classes.titleWrapper}>
       <Text className={classes.title}>{title}</Text>

@@ -1,6 +1,6 @@
 import { Stack, Text } from "@mantine/core";
 import React from "react";
-import { useExamHall } from "../../../context/examHallContext";
+import { useExamHall } from "../context/examHallContext";
 
 const ExamHallTitle = () => {
   const { form: { values: { title, description, result } = {} } = {} } =

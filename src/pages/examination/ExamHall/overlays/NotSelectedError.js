@@ -1,9 +1,9 @@
 import { Notification, Overlay } from "@mantine/core";
 import { IconX } from "@tabler/icons";
 import React from "react";
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 
-const NotSelectedError = ({ opened, toggle }) => {
+const NotSelectedError = () => {
   const { stepperFn: { isError, toggleError } = {} } = useExamHall();
   return (
     isError && (

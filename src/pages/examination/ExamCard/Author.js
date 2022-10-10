@@ -1,7 +1,7 @@
 import { Group } from "@mantine/core";
 import { IconUserCheck } from "@tabler/icons";
 import React from "react";
-import { useExamCard } from "../../../context/examCardContext";
+import { useExamCard } from "../context/examCardContext";
 
 const Author = () => {
   const { exam: { createdBy: { name } = {} } = {} } = useExamCard();

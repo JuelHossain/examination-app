@@ -30,6 +30,7 @@ const EditExam = ({ id, toggle }) => {
     if (gotExam) {
       setValues(formInitial);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gotExam]);
 
   const [
@@ -55,6 +56,7 @@ const EditExam = ({ id, toggle }) => {
         icon: <IconX />,
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updated, isUpdateError, reset, isExamError]);
   return (
     <Card

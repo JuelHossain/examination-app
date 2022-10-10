@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useUserExams from "./useUserExams";
+import useUserExams from "../../../../hooks/useUserExams";
 
 const useResultData = () => {
   const [loading, setLoading] = useState(true);

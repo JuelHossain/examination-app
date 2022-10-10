@@ -1,6 +1,6 @@
 import { Card, CloseButton } from "@mantine/core";
 import React from "react";
-import { useExamHall } from "../../../context/examHallContext";
+import { useExamHall } from "../context/examHallContext";
 import ExamHallTitle from "./ExamHallTitle";
 import QandA from "./q-and-a/QandA";
 const ExamHall = () => {

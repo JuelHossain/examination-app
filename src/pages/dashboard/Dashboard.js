@@ -4,7 +4,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { selectUser } from "../../features/auth/authSelector";
-import Profile from "../user/Profile";
 import AdminNav from "./AdminNav";
 import { adminNav, userNav } from "./navs";
 

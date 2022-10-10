@@ -1,5 +1,5 @@
 import React from "react";
-import { useExamHall } from "../../../../context/examHallContext";
+import { useExamHall } from "../../context/examHallContext";
 
 const CompletedMessage = () => {
   const { form: { values: { mark } = {} } = {} } = useExamHall();

@@ -1,5 +1,5 @@
 import { LoadingOverlay, SimpleGrid } from "@mantine/core";
-import useResultData from "../../../hooks/useResultData";
+import useResultData from "./hooks/useResultData";
 import StatList from "./StateList";
 
 export default function StatsRing() {
