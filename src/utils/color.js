@@ -3,6 +3,12 @@ import tailColors from "tailwindcss/colors";
 
 const hexColors = Object.entries(tailColors).slice(5);
 
+const convertToRgb = (color, key) => {
+  const rgbColor = convert.hex.rgb(color).join(" ");
+  const colorKey = `--main-${key}`;
+  return { [colorKey]: rgbColor };
+};
+
 export const rgbColors = {};
 
 hexColors.forEach((a) => {
@@ -15,12 +21,6 @@ hexColors.forEach((a) => {
   });
   Object.assign(rgbColors, { [colorName]: rgbColorsObject });
 });
-
-const convertToRgb = (color, key) => {
-  const rgbColor = convert.hex.rgb(color).join(" ");
-  const colorKey = `--main-${key}`;
-  return { [colorKey]: rgbColor };
-};
 
 export const colors = [
   { name: "pink", class: "bg-pink-500" },
